@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <span>Grafy Covid-19 pre Slovensko</span>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <a mat-button href="https://github.com/Institut-Zdravotnych-Analyz/covid19-data" target="_blank">Zdroj dát</a>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>
+
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+
+      <mat-form-field appearance="fill" style="width: 100%; margin-right:10px">
+        <mat-label>Vyber graf</mat-label>
+        <mat-select required [(ngModel)]="chart_selected">
+          <mat-option *ngFor="let item of charts" [value]="item.id">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="margin-right:0px">
+        <mat-label>Vyber dátum od</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-progress-bar [mode]="progressMode"></mat-progress-bar>
+
+    <mat-toolbar-row>
+      <span>Vyber okresy</span>
+    </mat-toolbar-row>
+
+    <mat-chip-list multiple="true" selectable="true">
+      <mat-chip *ngFor="let item of grps" [selected]="item.selected" (click)="district_Click(item)">
+        {{item.district}}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+<div *ngIf="showChart" echarts [options]="chartOption" class="demo-chart"></div>
