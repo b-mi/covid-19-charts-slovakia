@@ -39,15 +39,19 @@
     </div>
     <mat-progress-bar [mode]="progressMode"></mat-progress-bar>
 
-    <mat-toolbar-row>
-      <span>Vyber okresy</span>
-    </mat-toolbar-row>
+    <section class="field-background">
 
-    <mat-chip-list multiple="true" selectable="true">
-      <mat-chip *ngFor="let item of grps" [selected]="item.selected" (click)="district_Click(item)">
-        {{item.district}}
-      </mat-chip>
-    </mat-chip-list>
+      <mat-toolbar-row>
+        <span class="label">Vyber oblasti *</span>
+      </mat-toolbar-row>
+
+      <mat-chip-list multiple="true" selectable="true">
+        <mat-chip *ngFor="let item of grps" [selected]="item.selected" (click)="district_Click(item)">
+          {{item.district}}
+        </mat-chip>
+      </mat-chip-list>
+    </section>
+
   </mat-card-content>
 </mat-card>
 <div *ngIf="showChart" echarts [options]="chartOption" class="demo-chart"></div>
