@@ -43,7 +43,15 @@ export class Chart3Component implements OnInit, OnDestroy {
       data: ['bar', 'bar2', 'bar3'],
       align: 'left',
     },
-    tooltip: {},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      }
+    },
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -55,11 +63,17 @@ export class Chart3Component implements OnInit, OnDestroy {
     yAxis: {
       type: 'value',
     },
+    dataZoom: [
+      {
+        type: 'inside',
+      },
+    ],
     series: [
       {
         name: 'bar',
         data: [820, 932, 901, 934, 1290, 1330, 1320],
         type: 'line',
+        smooth: true,
       },
       {
         name: 'bar2',
@@ -71,6 +85,8 @@ export class Chart3Component implements OnInit, OnDestroy {
         data: [2000, 1000, 820, 932, 901, 934, 1290,],
         type: 'line',
       },],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: (idx) => idx * 5,
   };
 
   charts = [
@@ -149,7 +165,7 @@ export class Chart3Component implements OnInit, OnDestroy {
         const legendData = (<any>this.chartOption.legend).data;
         legendData.push(serName);
 
-        const ser: any = { name: serName, type: 'line', data: distr.data };
+        const ser: any = { name: serName, type: 'line', data: distr.data, smooth: true };
         series.push(ser);
 
         this.showChart = true;
