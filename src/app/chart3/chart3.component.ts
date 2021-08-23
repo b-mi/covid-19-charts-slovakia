@@ -92,7 +92,7 @@ export class Chart3Component implements OnInit, OnDestroy {
   charts = [
     { id: 'pcr-pos', name: 'Percentuálna pozitivita PCR testov za okresy', defaultDistrict: ['Bratislava II', 'Piešťany'] },
     { id: 'pcr-tot', name: 'Počet vykonaných PCR testov za okresy', defaultDistrict: ['Bratislava II', 'Piešťany'] },
-    { id: 'deads', name: 'Počet úmrtí', defaultDistrict: ['Slovensko'] },
+    { id: 'deads', name: 'Denný prírastok úmrtí', defaultDistrict: ['Slovensko'] },
     { id: 'new-cases', name: 'Počet nových prípadov potvrdených PCR testami', defaultDistrict: ['Slovensko'] },
   ]
 
