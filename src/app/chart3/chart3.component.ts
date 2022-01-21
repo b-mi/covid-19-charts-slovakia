@@ -129,7 +129,9 @@ export class Chart3Component implements OnInit, OnDestroy {
   }
   private async reloadData() {
     // this.showChart = true;
+    console.log('begin getting data');
     const d = await this.service.covid2GetData(this.chart_selected, this.sFromDate) as any;
+    console.log('end getting data');
 
     this.grps = d.grps as any[];
     this.labs = d.labs as any[];

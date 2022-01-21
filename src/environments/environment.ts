@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  xapi: 'http://localhost:63246/api/covid',
-  xapi2: 'http://localhost:63246/api/covid2',
-  api2: 'https://arxa.eu/rootapi/api/covid2',
-  api: 'https://arxa.eu/rootapi/api/covid'
+  api: 'http://localhost:63246/api/covid',
+  api2: 'http://localhost:63246/api/covid2',
+  xapi2: 'https://arxa.eu/rootapi/api/covid2',
+  xapi: 'https://arxa.eu/rootapi/api/covid'
 };
 
 /*
